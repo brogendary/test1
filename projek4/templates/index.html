@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shading Visualizer</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <h1 class="judul">#Shading Visualizer</h1>
+
+<div class="kotak1">
+
+    <form id="control-form">
+        <div class="form-group">
+            <label for="intensity">Intensitas cahaya:</label>
+            <input type="number" id="intensity" name="intensity" value="1.0" step="0.1">
+        </div>
+        <div class="form-group">
+            <label for="cmap">Pemilihan warna:</label>
+            <select id="cmap" name="cmap">
+                <option value="gray">Gray</option>
+                <option value="viridis">Viridis</option>
+                <option value="plasma">Plasma</option>
+                <option value="inferno">Inferno</option>
+                <option value="magma">Magma</option>
+                <option value="cividis">Cividis</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Posisi cahaya:</label>
+            X: <input type="number" id="light_x" name="light_x" value="-1" step="0.1">
+            <br>
+            Y: <input type="number" id="light_y" name="light_y" value="-1" step="0.1">
+            <br>
+            Z: <input type="number" id="light_z" name="light_z" value="1" step="0.1">
+        </div>
+        <button type="button" id="generate">Generate</button>
+    </form>
+
+</div>
+
+<div class="hasil">
+    <h3>#Hasil generate shading</h3>
+    <img id="output-image" src="" alt="Generated Shading">
+</div>
+
+    <script>
+        $(document).ready(function () {
+            $('#generate').click(function () {
+                const formData = {
+                    intensity: $('#intensity').val(),
+                    cmap: $('#cmap').val(),
+                    light_x: $('#light_x').val(),
+                    light_y: $('#light_y').val(),
+                    light_z: $('#light_z').val()
+                };
+                $.ajax({
+                    url: "/generate",
+                    type: "POST",
+                    contentType: "application/json",
+                    data: JSON.stringify(formData),
+                    success: function (response) {
+                        $('#output-image').attr("src", "data:image/png;base64," + response.image);
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

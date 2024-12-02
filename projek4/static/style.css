@@ -1,0 +1,66 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 20px;
+    background-color: black;
+}
+
+.judul {
+    text-align: center;
+    color: wheat;
+}
+
+.kotak1 {
+    color: white;
+    width: 500px;
+    height: 500px;
+    border: whitesmoke 5px solid;
+    float: left;
+    margin: auto;
+    border-radius: 15px;
+}
+
+img {
+    margin-top: 20px;
+    max-width: 100%;
+    height: auto;
+}
+
+.form-group {
+    margin: 10px 0;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input, select, button {
+    padding: 5px 10px;
+    font-size: 14px;
+    margin: 5px 0;
+}
+
+button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.hasil {
+    color: white;
+    width: 500px;
+    height: 500px;
+    border: white 5px solid;
+    float: right;
+    margin: auto;
+    border-radius: 15px;
+    padding: 5px;
+}
